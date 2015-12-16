@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="helloWorld" class="org.dimuthu.test.springdemo.beans.HelloWorld">
+		<property name="message" value="Hello World" />
+	</bean>
+
+	<!-- LifeCycle Callback methods -->
+	<bean id="callbackBean" class="org.dimuthu.test.springdemo.beans.CallBackBeanMethods" init-method="initMethod" destroy-method="destroyMethod">
+		<property name="myName" value="Calling Setters" />
+	</bean>
+
+	<!-- Build in PropertyPlaceholderConfigurer registered as a place holder for the SpringData.properties so that
+	subsequent configuration can use property place holders   -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="SpringData.properties" />
+	</bean>
+	
+	<!-- Result of property place holder configured above -->
+	<bean id="helloWorldPlaceHolder" class="org.dimuthu.test.springdemo.beans.HelloWorld" parent="helloWorld">
+		<property name="message" value="${BeanFactoryPP.message}" />
+	</bean>
+	
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+	
+	<bean id="annotationChecker" class="org.dimuthu.test.springdemo.beans.AnnotationCheckerBean">
+		<property name="message" value="Hello World In @Required Annotated" />
+	</bean>
+	
+	<bean id="helloWorldExtendor" class="org.dimuthu.test.springdemo.beans.HelloWorldExtendor">
+		<property name="message" value="Hello World In @Autowired Annotated" />
+		<property name="address" value="Hello World Address" />
+	</bean>
+<!-- 	
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	-->
+	<context:annotation-config/>
+	<context:component-scan base-package="org.dimuthu.test.springdemo.beans"/>
+	
+	<bean id="autoWireAnnotationChecker" class="org.dimuthu.test.springdemo.beans.AutoWireAnnotatorCheck"/>
+	
+</beans>
