@@ -1,4 +1,4 @@
-package org.dimuthu.test.springAop;
+package org.dimuthu.test.SpringAOP;
 
 /**
  * Hello world!
