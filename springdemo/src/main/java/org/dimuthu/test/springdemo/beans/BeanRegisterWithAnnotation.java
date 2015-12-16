@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BeanRegusterWithAnnotation {
+public class BeanRegisterWithAnnotation {
 
 	private HelloWorld helloWorld;
 

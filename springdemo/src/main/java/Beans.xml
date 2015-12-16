@@ -38,12 +38,20 @@
 		<property name="message" value="Hello World In @Autowired Annotated" />
 		<property name="address" value="Hello World Address" />
 	</bean>
-<!-- 	
-	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
-	-->
+	
 	<context:annotation-config/>
 	<context:component-scan base-package="org.dimuthu.test.springdemo.beans"/>
 	
 	<bean id="autoWireAnnotationChecker" class="org.dimuthu.test.springdemo.beans.AutoWireAnnotatorCheck"/>
+
+	<bean id="messageResource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>MyMessages</value>
+				<value>MyContent</value>
+			</list>
+		</property>
+	</bean>
 	
 </beans>
