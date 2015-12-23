@@ -25,7 +25,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
-			<version>2.5.5</version>
+			<version>4.2.3.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -33,6 +33,18 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.8.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.6.8</version>
+		</dependency>
+
 
 	</dependencies>
 

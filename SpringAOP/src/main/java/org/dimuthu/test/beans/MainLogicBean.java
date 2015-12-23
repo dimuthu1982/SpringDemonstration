@@ -1,5 +1,6 @@
 package org.dimuthu.test.beans;
 
+import org.dimuthu.test.aspects.MyCustomPointCut;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,15 +18,26 @@ public class MainLogicBean {
 		System.out.println("Calling After PointCut Method");
 	}
 
-	public String callingAfterReturningPointCutMethod(String name) {
-		System.out.println("Calling After Returning PointCut Method name=("+name+")");
-		return name.concat(" Kasun");
+	public String callingAfterReturningPointCutMethod(String firstName,String lastName) {
+		System.out.println("Calling After Returning PointCut Method { First Name=("+firstName+"), Last Name=("+lastName+")}");
+		return "Mr. ".concat(firstName).concat(" ").concat(lastName);
 	}
 
-	public String callingAfterThrowingPointCutMethod(String name) {
-		System.out.println("Calling After Throwinng PointCut Method name=("+name+")");
-		return name.concat(" Kasun");
+	public void callingAfterThrowingPointCutMethod() {
+		System.out.println("Calling After Throwinng PointCut Method");
+		throw new RuntimeException("Find Throwing PointCut");
 	}
+
+	public void callingAroundPointCutMethod() {
+		System.out.println("Calling Around Method");
+	}
+
+	@MyCustomPointCut
+	public void callingCustomAnnotatedPointCutMethod() {
+		System.out.println("Calling Custom Annotated Method");
+	}
+	
+	
 	
 	
 }
